@@ -1,3 +1,5 @@
+package main.java;
+
 import java.util.concurrent.*;
 
 
@@ -9,7 +11,7 @@ public class Bank {
         queue = new LinkedBlockingQueue();
     }
 
-    // TODO: Add code for actually updating accounts. 
+    // TODO: Add code for actually updating accounts.
     // Should you make this synchronized? Why or why not?
     // If not, how do you avoid concurrency issues?
     public synchronized void processTransaction(Transaction t) {
@@ -38,7 +40,7 @@ public class Bank {
 
         // TODO: Replace the following with code to generate as
         // many workers as needed. The number of workers is
-        // Given as a commandline argument. 
+        // Given as a commandline argument.
         Worker w1 = bank.new Worker();
         Worker w2 = bank.new Worker();
 
@@ -46,14 +48,14 @@ public class Bank {
             w1.start();
             w2.start();
 
-            // TODO: replace the following with code for 
-            // reading from the file and putting the transactions 
+            // TODO: replace the following with code for
+            // reading from the file and putting the transactions
             // into the BlockingQueue
             System.out.println("Putting 10 values from main");
             for (int i = 0; i< 10; i++) {
                 bank.queue.put(new Transaction(
-                    (int)(Math.random()*10), 
-                    (int)(Math.random()*10), 
+                    (int)(Math.random()*10),
+                    (int)(Math.random()*10),
                     (int)(Math.random()*1000)));
             }
 
@@ -67,7 +69,7 @@ public class Bank {
             System.out.println("interrupted");
         }
         System.out.println("All threads done");
-        
+
     }
 }
 
